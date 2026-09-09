@@ -28,3 +28,5 @@ if __name__ == "__main__":
     print(f"Detective Investigation Platform running at http://{host}:{port}")
     print("Press Ctrl+C to stop.")
     ThreadingHTTPServer((host, port), AppHandler).serve_forever()
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
