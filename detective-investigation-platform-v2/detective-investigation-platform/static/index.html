@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ملف التحقيق | Detective Investigation System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">✦</div><div><strong>ملف التحقيق</strong><small>DETECTIVE SYSTEM</small></div></div>
+    <nav>
+      <button class="nav-item active" data-view="dashboard"><span>⌂</span> لوحة القيادة</button>
+      <button class="nav-item" data-view="case"><span>▣</span> القضية الحالية</button>
+      <button class="nav-item" data-view="evidence"><span>⌕</span> الأدلة <b class="nav-count">17</b></button>
+      <button class="nav-item" data-view="suspects"><span>♙</span> المشتبه بهم</button>
+      <button class="nav-item" data-view="timeline"><span>◷</span> الخط الزمني</button>
+      <button class="nav-item" data-view="board"><span>⌘</span> لوحة الربط <b class="nav-count amber">3</b></button>
+    </nav>
+    <div class="sidebar-bottom"><div class="profile"><div class="avatar">م</div><div><strong>محقق مجهول</strong><small id="profile-xp">محقق مبتدئ · 1,240 XP</small></div></div><button class="settings open-settings-btn" id="open-settings">⚙ الإعدادات</button></div>
+  </aside>
+
+  <main class="app-shell">
+    <header class="topbar"><div><span class="eyebrow" id="live-date">THURSDAY · 14 NOV 2024</span><h1 id="page-title">مركز التحقيق</h1></div><div class="top-actions">
+      <div class="notif-wrap">
+        <button class="icon-btn" id="notif-btn" title="الإشعارات" aria-haspopup="true">♢<i id="notif-dot" style="display:none"></i></button>
+        <div class="notif-panel" id="notif-panel">
+          <div class="notif-head"><strong>الإشعارات</strong><button id="notif-clear" type="button">مسح الكل</button></div>
+          <div class="notif-list" id="notif-list"></div>
+        </div>
+      </div>
+      <div class="status"><span class="pulse"></span> النظام متصل</div>
+      <div class="status" id="session-timer" title="مدة التحقيق في هذه الجلسة">⏱ 00:00</div>
+      <button class="icon-btn open-settings-btn" title="الإعدادات" aria-label="الإعدادات">⚙</button>
+    </div></header>
+
+    <section id="dashboard-view" class="view active-view">
+      <div class="welcome"><div><span class="eyebrow amber-text">مرحبًا بعودتك، أيها المحقق</span><h2>كل إجابة تبدأ بملاحظة.</h2><p>لديك قضية واحدة مفتوحة. راجع الأدلة، اربط الخيوط، وابنِ نظريتك.</p></div><button class="primary-btn" data-view="case">متابعة التحقيق <span>←</span></button></div>
+      <div class="stats-grid"><div class="stat-card"><span>القضايا المحلولة</span><strong>27</strong><small class="up">↗ +3 هذا الشهر</small></div><div class="stat-card"><span>دقة الاستنتاج</span><strong>91<em>%</em></strong><small class="up">↗ +4.2%</small></div><div class="stat-card"><span>متوسط الوقت</span><strong>24<em>m</em></strong><small>أفضل من 68% من المحققين</small></div><div class="stat-card"><span>الترتيب العالمي</span><strong>#184</strong><small class="amber-text">↑ 12 مركزًا</small></div></div>
+      <div class="panel achievements-panel"><div class="panel-heading"><div><span class="eyebrow">ACHIEVEMENTS</span><h3>الإنجازات</h3></div></div><div class="achievements-grid" id="achievements-grid"></div></div>
+      <div class="dashboard-grid"><div class="panel continue-panel"><div class="panel-heading"><div><span class="eyebrow">CONTINUE INVESTIGATION</span><h3>القضية #027 — الهاتف المفقود</h3></div><span class="case-status">قيد التحقيق</span></div><p class="muted">اختفى هاتف تجريبي من مختبر الأبحاث B-12 خلال فترة انقطاع الكاميرات. أربعة أشخاص كانوا في المبنى.</p><div class="progress-row"><span>التقدم <b id="progress-text">64%</b></span><div class="progress"><i id="progress-bar"></i></div></div><div class="mini-meta"><span>◷ 18–25 دقيقة</span><span>◆ صعوبة متوسطة</span><span>⌁ 12 / 17 دليل</span></div><button class="ghost-btn" data-view="case">فتح ملف القضية <span>←</span></button></div>
+        <div class="panel ranking"><div class="panel-heading"><div><span class="eyebrow">WEEKLY RANKING</span><h3>أفضل المحققين</h3></div><a href="#">عرض الكل</a></div><div class="rank"><b class="medal gold">01</b><div><strong>Detective_77</strong><small>47 قضية محلولة</small></div><em>98.4%</em></div><div class="rank"><b class="medal silver">02</b><div><strong>Raven</strong><small>31 قضية محلولة</small></div><em>97.9%</em></div><div class="rank"><b class="medal bronze">03</b><div><strong>SherlockX</strong><small>29 قضية محلولة</small></div><em>97.2%</em></div><div class="rank me"><b>184</b><div><strong>أنت</strong><small>27 قضية محلولة</small></div><em>91.0%</em></div></div></div>
+      <div class="panel cases-panel"><div class="panel-heading"><div><span class="eyebrow">CASE ARCHIVE</span><h3>أرشيف القضايا</h3></div><button class="filter-btn">كل القضايا⌄</button></div><div class="case-list"><div class="case-row" data-case-state="active" data-view="case"><span class="case-code">#027</span><div><strong>اختفاء الهاتف من المختبر</strong><small>جريمة غرفة مغلقة · 4 مشتبهين</small></div><span class="difficulty medium">متوسط</span><span class="row-progress" id="archive-progress">64%</span></div><div class="case-row" data-case-state="solved"><span class="case-code">#026</span><div><strong>آخر قطار إلى الشمال</strong><small>لغز سفر · 6 مشتبهين</small></div><span class="difficulty medium">متوسط</span><span class="solved">✓ محلولة</span></div><div class="case-row" data-case-state="locked"><span class="case-code">#025</span><div><strong>تسريب الملف الأسود</strong><small>لغز مؤسسي · 5 مشتبهين</small></div><span class="difficulty expert">خبير</span><span class="locked">قفل</span></div></div></div>
+    </section>
+
+    <section id="case-view" class="view"><div class="case-hero"><div><span class="eyebrow amber-text">CASE FILE · #027</span><h2>اختفاء الهاتف من المختبر</h2><p>حدد من أخذ الهاتف، كيف أخذه، ومتى حدثت السرقة.</p></div><div class="case-facts"><span><b>الموقع</b> مختبر الأبحاث B-12</span><span><b>المدة</b> 20–30 دقيقة</span><span><b>المشتبه بهم</b> 4 أشخاص</span></div></div><div class="case-tabs"><button class="tab active" data-view="evidence">الأدلة <b>17</b></button><button class="tab" data-view="suspects">المشتبه بهم <b>4</b></button><button class="tab" data-view="timeline">الخط الزمني</button><button class="tab" data-view="board">لوحة الربط <b>3</b></button><button class="tab theory-tab" id="theory-open">تقديم النظرية <span>←</span></button></div><div class="case-content"><div class="panel briefing"><span class="eyebrow">BRIEFING</span><h3>الوقائع الأولية</h3><p>في الساعة 14:23، أبلغت مديرة المختبر عن اختفاء هاتف تجريبي من الطاولة رقم 4. توقفت كاميرات المراقبة بين 14:12 و14:18. لا توجد علامات كسر أو دخول بالقوة.</p><div class="brief-clues"><div>◉ <span>آخر ظهور للهاتف</span><b>14:00</b></div><div>◉ <span>انقطاع الكاميرا</span><b>14:12 – 14:18</b></div><div>◉ <span>اكتشاف الاختفاء</span><b>14:23</b></div></div></div><div class="panel quote-card"><span class="eyebrow">LEAD DETECTIVE NOTE</span><div class="quote-mark">“</div><p>لا تبحث عن الشخص الذي لديه الدافع فقط. ابحث عن الشخص الذي امتلك <strong>الفرصة</strong> عندما اختفت الرؤية.</p><small>— ملاحظة مجهولة في ملف القضية</small></div></div></section>
+
+    <section id="evidence-view" class="view"><div class="section-heading"><div><span class="eyebrow">EVIDENCE ROOM · 17 ITEMS</span><h2>غرفة الأدلة</h2><p>الأدلة لا تتحدث من تلقاء نفسها. اضغط على أي دليل لفحص التفاصيل.</p></div><button class="primary-btn" id="hint-btn">💡 طلب تلميح <small>-10 نقاط</small></button></div><div class="evidence-layout"><div class="evidence-main"><div class="evidence-toolbar"><input type="search" id="evidence-search" placeholder="ابحث في عنوان أو تفاصيل الدليل..." aria-label="بحث في الأدلة" /><select id="evidence-filter" aria-label="تصفية حسب النوع"><option value="">كل الأنواع</option></select></div><div class="evidence-grid" id="evidence-grid"></div><p class="muted" id="evidence-empty" style="display:none;text-align:center;padding:30px 0">لا توجد أدلة مطابقة لبحثك.</p></div><aside class="panel evidence-inspector" id="inspector"><span class="eyebrow">INSPECTOR</span><div class="empty-inspector"><div>⌕</div><h3>اختر دليلًا للفحص</h3><p>ستظهر هنا التفاصيل والروابط والتناقضات المكتشفة.</p></div></aside></div></section>
+
+    <section id="suspects-view" class="view"><div class="section-heading"><div><span class="eyebrow">PERSONS OF INTEREST · 04</span><h2>ملفات المشتبه بهم</h2><p>قارن بين أقوالهم، دوافعهم، والفرص المتاحة لهم.</p></div></div><div class="suspects-grid" id="suspects-grid"></div></section>
+    <section id="timeline-view" class="view"><div class="section-heading"><div><span class="eyebrow">CHRONOLOGY · CASE #027</span><h2>الخط الزمني</h2><p>رتّب الأحداث لتكشف الدقيقة المفقودة.</p></div><button class="ghost-btn" id="add-event">+ أضف ملاحظة زمنية</button></div><div class="panel timeline-panel"><div class="timeline" id="timeline"></div></div></section>
+    <section id="board-view" class="view"><div class="section-heading"><div><span class="eyebrow">EVIDENCE BOARD · 03 CONNECTIONS</span><h2>لوحة الربط والاستنتاج</h2><p>ابنِ الروابط التي ستدعم نظريتك النهائية.</p></div><button class="primary-btn" id="connect-btn">+ إنشاء رابط</button></div><div class="panel board-panel"><div class="board-toolbar"><span>اسحب الأدلة إلى اللوحة أو أنشئ رابطًا منطقيًا.</span><span class="board-legend"><i class="dot red"></i> تناقض <i class="dot amber"></i> رابط محتمل <i class="dot green"></i> مؤكد</span></div><div class="link-type-picker" id="link-type-picker" style="display:none"><span>اختر نوع الرابط الجديد:</span><button type="button" class="type-btn confirmed" data-type="confirmed"><i class="dot green"></i> مؤكد</button><button type="button" class="type-btn probable" data-type="probable"><i class="dot amber"></i> رابط محتمل</button><button type="button" class="type-btn contradiction" data-type="contradiction"><i class="dot red"></i> تناقض</button><button type="button" class="type-btn cancel" data-type="cancel">إلغاء</button></div><div class="board-canvas" id="board-canvas"><div class="board-card person-card" data-card-id="sarah" style="right:8%;top:17%"><span>شخص</span><strong>Sarah Miller</strong><small>مساعدة مختبر</small></div><div class="board-card evidence-card" data-card-id="badge-log" style="right:42%;top:10%"><span>دليل #07</span><strong>سجل بطاقة الدخول</strong><small>14:17 · دخول المختبر</small></div><div class="board-card evidence-card" data-card-id="camera-gap" style="right:70%;top:42%"><span>دليل #03</span><strong>انقطاع الكاميرا</strong><small>14:12 – 14:18</small></div><div class="board-card contradiction-card" data-card-id="contradiction" style="right:36%;top:63%"><span>تناقض #03</span><strong>أين كنتِ؟</strong><small>قالت: الكافتيريا</small></div><div class="connection-line line-one"></div><div class="connection-line line-two"></div><div class="connection-line line-three"></div><div class="board-note">“Sarah كانت في المختبر وقت اختفاء الهاتف.”</div><div id="user-links-layer"></div></div></div></section>
+  </main>
+  <div id="toast" class="toast"></div>
+
+  <div id="event-modal" class="modal-backdrop">
+    <div class="modal">
+      <button class="modal-close" data-close-modal>×</button>
+      <span class="eyebrow amber-text">CASE NOTEBOOK</span>
+      <h2>أضف ملاحظة زمنية</h2>
+      <p class="muted">سجّل ملاحظتك الخاصة على الخط الزمني. تُحفظ في متصفحك تلقائيًا.</p>
+      <label>الوقت (مثال 14:19)<input type="text" id="event-time" maxlength="5" placeholder="00:00" /></label>
+      <label>العنوان<input type="text" id="event-title" maxlength="60" placeholder="ماذا لاحظت؟" /></label>
+      <label>التفاصيل<textarea id="event-desc" rows="3" maxlength="220" placeholder="اشرح ملاحظتك بالتفصيل..."></textarea></label>
+      <button class="primary-btn full" id="save-event">💾 حفظ الملاحظة</button>
+    </div>
+  </div>
+
+  <div id="settings-modal" class="modal-backdrop">
+    <div class="modal">
+      <button class="modal-close" data-close-modal>×</button>
+      <span class="eyebrow amber-text">SETTINGS</span>
+      <h2>الإعدادات</h2>
+      <p class="muted">تحكّم بتجربتك داخل منصة التحقيق.</p>
+      <label class="switch-row"><span>تفعيل الحركات والانتقالات</span><input type="checkbox" id="setting-motion" checked /></label>
+      <label class="switch-row"><span>تفعيل صوت الإشعارات</span><input type="checkbox" id="setting-sound" /></label>
+      <button class="ghost-btn full" id="reset-progress" type="button">↺ إعادة تعيين تقدم القضية بالكامل</button>
+    </div>
+  </div>
+
+  <div id="solve-overlay" class="solve-overlay">
+    <div class="solve-card">
+      <div class="solve-icon">🏆</div>
+      <h2>تم حل القضية!</h2>
+      <p id="solve-detail">أحسنت أيها المحقق. لقد كشفت الحقيقة.</p>
+      <button class="primary-btn" id="solve-close">متابعة</button>
+    </div>
+  </div>
+
+  <div id="theory-modal" class="modal-backdrop"><div class="modal"><button class="modal-close" data-close-modal>×</button><span class="eyebrow amber-text">FINAL THEORY · CASE #027</span><h2>ابنِ نظريتك</h2><p class="muted">الإجابة الكاملة تحتاج إلى الجاني والطريقة والوقت، وليس الاسم فقط.</p><label>الجاني<select id="culprit"><option value="sarah">Sarah Miller</option><option value="adam">Adam Brooks</option><option value="john">John Carter</option><option value="michael">Michael Ross</option></select></label><label>طريقة السرقة<select id="method"><option value="camera">استغلال انقطاع الكاميرا</option><option value="access">استخدام بطاقة دخول أخرى</option><option value="window">الخروج من نافذة المختبر</option></select></label><label>الأدلة التي تثبت النظرية<div class="check-list" id="theory-checklist"><label><input type="checkbox" data-correct="true" checked> سجل بطاقة الدخول — 14:17</label><label><input type="checkbox" data-correct="true" checked> سجل الكاميرا — انقطاع مؤقت</label><label><input type="checkbox" data-correct="false"> شهادة Adam</label><label><input type="checkbox" data-correct="false"> صورة المختبر</label></div></label><button class="primary-btn full" id="submit-theory">🔐 إرسال النظرية</button></div></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
